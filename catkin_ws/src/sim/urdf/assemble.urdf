@@ -1,0 +1,488 @@
+<?xml version="1.0" ?>
+<robot name="assemble">
+
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.1525 0.1525 0.008157"/>
+    <mass value="9.339688"/>
+    <inertia ixx="0.085521" ixy="0.0" ixz="-0.0" iyy="0.085521" iyz="-0.0" izz="0.165754"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/base_link_m-binary.stl"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0 0 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/base_link_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="kudou1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.8000000000000247e-05 -0.003130999999999995 0.015137000000000001"/>
+    <mass value="3.008445"/>
+    <inertia ixx="0.006931" ixy="0.0" ixz="0.000715" iyy="0.005997" iyz="-0.000271" izz="0.004517"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.24 -0.24 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou1_1_m-binary.stl"/>
+    </geometry>
+    <material name="yellow">
+      <color rgba="1 1 0 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.24 -0.24 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou1_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+
+<link name="tire3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.400000000000625e-05 -0.017025 -9.9999999999997e-07"/>
+    <mass value="0.736526"/>
+    <inertia ixx="0.000238" ixy="-0.0" ixz="0.0" iyy="0.000357" iyz="-0.0" izz="0.000238"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.065022 -0.083033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire3_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="0 0 1 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.065022 -0.083033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire3_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="tire2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.400000000000625e-05 -0.017025000000000012 -9.9999999999997e-07"/>
+    <mass value="0.736526"/>
+    <inertia ixx="0.000238" ixy="-0.0" ixz="3.4e-05" iyy="0.000357" iyz="-3.4e-05" izz="0.000238"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.065022 -0.258033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire2_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="0 0 1 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.065022 -0.258033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire2_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="kudou2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.8000000000000247e-05 -0.003130999999999995 0.015137000000000001"/>
+    <mass value="3.008445"/>
+    <inertia ixx="0.006931" ixy="0.0" ixz="-0.014488" iyy="0.005997" iyz="0.014931" izz="0.004517"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.065 -0.24 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou2_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="0 0 1 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.065 -0.24 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou2_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+
+<link name="kudou4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.8000000000000247e-05 -0.003131000000000002 0.015137000000000001"/>
+    <mass value="3.008445"/>
+    <inertia ixx="0.006931" ixy="0.0" ixz="0.015916" iyy="0.005997" iyz="-0.015473" izz="0.004516"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.24 -0.065 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou4_1_m-binary.stl"/>
+    </geometry>
+    <material name="yellow">
+      <color rgba="0 1 0 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.24 -0.065 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou4_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+
+<link name="tire4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.399999999997849e-05 -0.017025 -9.9999999999997e-07"/>
+    <mass value="0.736526"/>
+    <inertia ixx="0.000238" ixy="-0.0" ixz="-3.4e-05" iyy="0.000357" iyz="3.4e-05" izz="0.000238"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.240022 -0.083033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire4_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.240022 -0.083033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire4_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+
+<link name="tire1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.399999999997849e-05 -0.017025000000000012 -9.9999999999997e-07"/>
+    <mass value="0.736526"/>
+    <inertia ixx="0.000238" ixy="-0.0" ixz="0.0" iyy="0.000357" iyz="-0.0" izz="0.000238"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.240022 -0.258033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire1_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="0 0 1 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.240022 -0.258033 0.000262"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/tire1_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+
+<link name="kudou3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.8000000000000247e-05 -0.003131000000000002 0.015137000000000001"/>
+    <mass value="3.008445"/>
+    <inertia ixx="0.006931" ixy="0.0" ixz="0.000714" iyy="0.005997" iyz="-0.000272" izz="0.004516"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.065 -0.065 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou3_1_m-binary.stl"/>
+    </geometry>
+    <material name="yellow">
+      <color rgba="0 1 0 2"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.065 -0.065 -0.013738"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/urdf/bin_stl/kudou3_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+
+
+
+<joint name="yaw1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.24 0.24 0.013738"/>
+  <parent link="base_link"/>
+  <child link="kudou1_1"/>
+  <axis xyz="-0.0 0.0 0.01"/>
+</joint>
+<transmission name="yaw1_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="yaw1">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="yaw1_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<joint name="kudou3" type="continuous">
+  <origin rpy="0 0 0" xyz="2.2e-05 0.018033 -0.014"/>
+  <parent link="kudou3_1"/>
+  <child link="tire3_1"/>
+  <axis xyz="-2.2e-05 0.01 0.0"/>
+</joint>
+<transmission name="kudou3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="kudou3">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="kudou3_actr">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<joint name="kudou2" type="continuous">
+  <origin rpy="0 0 0" xyz="2.2e-05 0.018033 -0.014"/>
+  <parent link="kudou2_1"/>
+  <child link="tire2_1"/>
+  <axis xyz="-2.2e-05 0.01 -0.0"/>
+</joint>
+<transmission name="kudou2_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="kudou2">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="kudou2_actr">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<joint name="yaw2" type="continuous">
+  <origin rpy="0 0 0" xyz="0.065 0.24 0.013738"/>
+  <parent link="base_link"/>
+  <child link="kudou2_1"/>
+  <axis xyz="-0.0 0.0 0.01"/>
+</joint>
+<transmission name="yaw2_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="yaw2">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="yaw2_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<joint name="yaw4" type="continuous">
+  <origin rpy="0 0 0" xyz="0.24 0.065 0.013738"/>
+  <parent link="base_link"/>
+  <child link="kudou4_1"/>
+  <axis xyz="-0.0 -0.0 0.01"/>
+</joint>
+<transmission name="yaw4_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="yaw4">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="yaw4_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<joint name="kudou4" type="continuous">
+  <origin rpy="0 0 0" xyz="2.2e-05 0.018033 -0.014"/>
+  <parent link="kudou4_1"/>
+  <child link="tire4_1"/>
+  <axis xyz="-2.2e-05 0.01 -0.0"/>
+</joint>
+<transmission name="kudou4_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="kudou4">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="kudou4_actr">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<joint name="kudou1" type="continuous">
+  <origin rpy="0 0 0" xyz="2.2e-05 0.018033 -0.014"/>
+  <parent link="kudou1_1"/>
+  <child link="tire1_1"/>
+  <axis xyz="-2.2e-05 0.01 -0.0"/>
+</joint>
+<transmission name="kudou1_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="kudou1">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="kudou1_actr">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<joint name="yaw3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.065 0.065 0.013738"/>
+  <parent link="base_link"/>
+  <child link="kudou3_1"/>
+  <axis xyz="-0.0 -0.0 0.01"/>
+</joint>
+<transmission name="yaw3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="yaw3">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="yaw3_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+Hokuyo Laser 
+  <link name="hokuyo_link1">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+
+  </link>
+  <joint name="hokuyo_joint1" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.15 0.3 0.07" rpy="0 0 1.5"/>
+    <parent link="base_link"/>
+    <child link="hokuyo_link1"/>
+  </joint>
+
+
+
+
+<gazebo>
+  <plugin  name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+  <robotNamespace>assemble</robotNamespace>
+  <legacyModeNS>true</legacyModeNS>
+  </plugin>
+</gazebo>
+
+<gazebo reference="base_link">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<gazebo reference="kudou1_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<gazebo reference="kudou2_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<gazebo reference="kudou3_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<gazebo reference="kudou4_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+
+
+
+<gazebo reference="tire1_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<gazebo reference="tire2_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<gazebo reference="tire3_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<gazebo reference="tire4_1">
+  <selfCollide>true</selfCollide>
+  <mu1 value="0.8"/><mu2 value="0.8"/>
+</gazebo>
+
+<!-- hokuyo-->
+  <gazebo reference="hokuyo_link1">
+    <sensor type="ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!--Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>hokuyo_link1</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+</robot>

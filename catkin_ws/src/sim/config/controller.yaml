@@ -1,0 +1,38 @@
+assemble:
+# Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  yaw3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou2_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: kudou2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou3_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: kudou3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou4_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: kudou4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou1_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: kudou1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  yaw4_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  yaw2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  yaw1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw1
+    pid: {p: 100.0, i: 0.01, d: 10.0}

@@ -1,0 +1,37 @@
+assemble:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  yaw3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: kudou2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: kudou3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou4_position_controller:
+    type: position_controllers/JointPositionController
+    joint: kudou4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  kudou1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: kudou1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  yaw4_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  yaw2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  yaw1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: yaw1
+    pid: {p: 100.0, i: 0.01, d: 10.0}

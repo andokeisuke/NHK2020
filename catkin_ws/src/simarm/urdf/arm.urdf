@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<robot name="arm">
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.254834 0.039364 0.310017"/>
+    <mass value="45.314284"/>
+    <inertia ixx="0.286633" ixy="-0.000298" ixz="3.027289" iyy="0.523206" iyz="-3.033247" izz="0.286474"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/base_link_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/base_link_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.087719 0.10587100000000002 -0.02925500000000003"/>
+    <mass value="6.328446"/>
+    <inertia ixx="0.084215" ixy="-0.062243" ixz="-0.28075" iyy="0.054043" iyz="0.297431" izz="0.134134"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.102093 -0.244808 -0.31418"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_2_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.102093 -0.244808 -0.31418"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_2_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_5_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.045277 -0.024643000000000026 0.030935999999999964"/>
+    <mass value="2.672376"/>
+    <inertia ixx="0.0023" ixy="-0.000322" ixz="-0.597376" iyy="0.002588" iyz="0.597788" izz="0.002694"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.037659 -0.49496 -0.373221"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_5_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.037659 -0.49496 -0.373221"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_5_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_6_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.012661999999999993 -0.00855499999999998 0.005784000000000011"/>
+    <mass value="0.600174"/>
+    <inertia ixx="0.000297" ixy="1e-05" ixz="-0.143576" iyy="0.000303" iyz="0.143556" izz="0.000268"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1101 -0.452043 -0.4167"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_6_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1101 -0.452043 -0.4167"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_6_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.065412 -0.011624000000000079 0.01030700000000001"/>
+    <mass value="3.736921"/>
+    <inertia ixx="0.003463" ixy="-0.001098" ixz="-0.706138" iyy="0.009143" iyz="0.70697" izz="0.008963"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.07468 -0.521815 -0.366884"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_4_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.07468 -0.521815 -0.366884"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_4_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_7_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.020459000000000005 -0.03386800000000001 0.02798600000000001"/>
+    <mass value="0.24577"/>
+    <inertia ixx="0.000154" ixy="-6.5e-05" ixz="-0.062227" iyy="0.000161" iyz="0.062363" izz="0.000148"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.159623 -0.449528 -0.39748"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_7_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.159623 -0.449528 -0.39748"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_7_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04289100000000001 0.03084600000000004 0.053396"/>
+    <mass value="11.403396"/>
+    <inertia ixx="0.01719" ixy="-0.005857" ixz="-1.07037" iyy="0.0637" iyz="1.079015" izz="0.065882"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.314739 -0.520928 -0.28194"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_3_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.314739 -0.520928 -0.28194"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_3_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_7__2__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.035362000000000005 -0.03200999999999998 0.009538999999999964"/>
+    <mass value="0.244163"/>
+    <inertia ixx="0.000101" ixy="-8.1e-05" ixz="-0.064676" iyy="0.000168" iyz="0.06477" izz="0.000193"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.118393 -0.435117 -0.46643"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_7__2__1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.118393 -0.435117 -0.46643"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_7__2__1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<link name="JAW_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.057975 0.08495500000000002 0.01280899999999996"/>
+    <mass value="18.758798"/>
+    <inertia ixx="0.101296" ixy="0.072874" ixz="0.141426" iyy="0.132378" iyz="-0.137937" izz="0.190424"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.253392 -0.084654 -0.311443"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_1_1_m-binary.stl"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.253392 -0.084654 -0.311443"/>
+    <geometry>
+      <mesh filename="package://fusion2urdf/arm/bin_stl/JAW_1_1_m-binary.stl"/>
+    </geometry>
+  </collision>
+</link>
+<joint name="rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.151299 0.160154 0.002737"/>
+  <parent link="JAW_1_1"/>
+  <child link="JAW_2_1"/>
+  <axis xyz="-0.001499 0.0 -0.009887"/>
+</joint>
+<transmission name="rev2_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev2">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev2_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<joint name="rev5" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.112339 -0.026855 0.006337"/>
+  <parent link="JAW_4_1"/>
+  <child link="JAW_5_1"/>
+  <axis xyz="0.000337 0.00525 0.008504"/>
+</joint>
+<transmission name="rev5_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev5">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev5_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<joint name="rev6" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.072441 -0.042917 0.043479"/>
+  <parent link="JAW_5_1"/>
+  <child link="JAW_6_1"/>
+  <axis xyz="-0.00775 -0.005236 0.00354"/>
+</joint>
+<transmission name="rev6_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev6">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev6_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<joint name="rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.240059 0.000887 0.084944"/>
+  <parent link="JAW_3_1"/>
+  <child link="JAW_4_1"/>
+  <axis xyz="-0.009732 -0.001765 0.001475"/>
+</joint>
+<transmission name="rev4_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev4">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev4_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<joint name="rev8" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.049523 -0.002515 -0.01922"/>
+  <parent link="JAW_6_1"/>
+  <child link="JAW_7_1"/>
+  <axis xyz="0.003798 -0.008335 -0.004013"/>
+</joint>
+<transmission name="rev8_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev8">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev8_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<joint name="rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.212646 0.27612 -0.03224"/>
+  <parent link="JAW_2_1"/>
+  <child link="JAW_3_1"/>
+  <axis xyz="0.001499 -0.0 0.009887"/>
+</joint>
+<transmission name="rev3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev3">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev3_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<joint name="rev7" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.008293 -0.016926 0.04973"/>
+  <parent link="JAW_6_1"/>
+  <child link="JAW_7__2__1"/>
+  <axis xyz="0.003798 -0.008335 -0.004013"/>
+</joint>
+<transmission name="rev7_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev7">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev7_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<joint name="rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.253392 0.084654 0.311443"/>
+  <parent link="base_link"/>
+  <child link="JAW_1_1"/>
+  <axis xyz="0.0 0.01 -0.0"/>
+</joint>
+<transmission name="rev1_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rev1">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rev1_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<gazebo>
+  <plugin  name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+  <robotNamespace>arm</robotNamespace>
+  <legacyModeNS>true</legacyModeNS>
+  </plugin>
+</gazebo>
+</robot>

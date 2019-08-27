@@ -1,0 +1,17 @@
+digraph G {
+"base_link" -> "hokuyo_link1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 25.634 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /odom2\nAverage rate: 31.746 Hz\nMost recent transform: 25.627 ( 0.007 sec old)\nBuffer length: 0.567 sec\n"];
+"kudou1_1" -> "tire1_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"base_link" -> "kudou1_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"kudou2_1" -> "tire2_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"base_link" -> "kudou2_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"kudou3_1" -> "tire3_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"base_link" -> "kudou3_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"kudou4_1" -> "tire4_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"base_link" -> "kudou4_1"[label="Broadcaster: /assemble/robot_state_publisher\nAverage rate: 51.724 Hz\nMost recent transform: 25.630 ( 0.004 sec old)\nBuffer length: 0.580 sec\n"];
+"map" -> "odom"[label="Broadcaster: /amcl\nAverage rate: 41.818 Hz\nMost recent transform: 25.684 ( -0.050 sec old)\nBuffer length: 0.550 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 25.634"[ shape=plaintext ] ;
+ }->"map";
+}

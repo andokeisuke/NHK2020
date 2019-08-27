@@ -1,0 +1,37 @@
+arm:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  rev2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rev5_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev5
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rev6_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev6
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rev4_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rev8_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev8
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rev3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rev7_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev7
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rev1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: rev1
+    pid: {p: 0.1, i: 0.0, d: 0.0}

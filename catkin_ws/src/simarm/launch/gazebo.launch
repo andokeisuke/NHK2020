@@ -1,0 +1,18 @@
+<launch>
+  <param name="robot_description" textfile="$(find simarm)/urdf/arm.urdf"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+   <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  </include>
+
+
+
+  <include file="$(find simarm)/launch/control.launch"/>
+
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -model arm -param robot_description"/>
+
+</launch>

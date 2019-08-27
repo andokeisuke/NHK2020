@@ -1,0 +1,20 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find sim)/config/controller.yaml" command="load"/>
+ 
+ 
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" ns="assemble" output="screen"
+  args="yaw3_position_controller kudou2_velocity_controller kudou3_velocity_controller kudou4_velocity_controller kudou1_velocity_controller yaw4_position_controller yaw2_position_controller yaw1_position_controller joint_state_controller"/>
+ 
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+  type="robot_state_publisher"
+  respawn="false" output="screen" ns="/assemble">
+
+  </node>
+ 
+</launch>
+
+
