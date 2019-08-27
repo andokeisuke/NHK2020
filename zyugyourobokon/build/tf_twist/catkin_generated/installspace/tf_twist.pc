@@ -1,0 +1,8 @@
+prefix=/home/ando/zyugyourobokon/install
+
+Name: tf_twist
+Description: Description of tf_twist
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/zyugyourobokon/install/lib 
+Requires: 
