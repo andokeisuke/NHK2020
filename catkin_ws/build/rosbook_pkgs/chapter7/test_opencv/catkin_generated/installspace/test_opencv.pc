@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: test_opencv
+Description: Description of test_opencv
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib -ltest_opencv
+Requires: cv_bridge image_transport roscpp rospy sensor_msgs std_msgs

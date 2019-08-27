@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: arrayutil_python
+Description: Description of arrayutil_python
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib 
+Requires: rospy

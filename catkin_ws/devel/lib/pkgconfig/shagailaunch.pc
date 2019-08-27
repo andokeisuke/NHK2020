@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/devel
+
+Name: shagailaunch
+Description: Description of shagailaunch
+Version: 0.0.0
+Cflags: -I/home/ando/catkin_ws/devel/include
+Libs: -L/home/ando/catkin_ws/devel/lib 
+Requires: message_runtime

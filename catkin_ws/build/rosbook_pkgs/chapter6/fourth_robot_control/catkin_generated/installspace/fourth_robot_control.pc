@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: fourth_robot_control
+Description: Description of fourth_robot_control
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib -lfourth_robot_control
+Requires: 

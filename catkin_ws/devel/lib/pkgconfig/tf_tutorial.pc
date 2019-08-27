@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/devel
+
+Name: tf_tutorial
+Description: Description of tf_tutorial
+Version: 0.1.3
+Cflags: 
+Libs: -L/home/ando/catkin_ws/devel/lib 
+Requires: roscpp rospy tf2

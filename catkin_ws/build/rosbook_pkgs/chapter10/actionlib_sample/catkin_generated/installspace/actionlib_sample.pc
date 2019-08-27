@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: actionlib_sample
+Description: Description of actionlib_sample
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib -lactionlib_sample
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: my_odom3
+Description: Description of my_odom3
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib 
+Requires: roscpp rospy message_runtime std_msgs geometry_msgs

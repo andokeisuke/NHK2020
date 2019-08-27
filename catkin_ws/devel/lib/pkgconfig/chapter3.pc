@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/devel
+
+Name: chapter3
+Description: Description of chapter3
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/devel/lib 
+Requires: 

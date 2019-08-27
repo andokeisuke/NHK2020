@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: pub_vel_keyboard
+Description: Description of pub_vel_keyboard
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib 
+Requires: 

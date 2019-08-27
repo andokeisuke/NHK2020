@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/devel
+
+Name: urg_test
+Description: Description of urg_test
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/devel/lib 
+Requires: 

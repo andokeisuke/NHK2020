@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/devel
+
+Name: pluginlib_arrayutil_client
+Description: Description of pluginlib_arrayutil_client
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/devel/lib -lpluginlib_arrayutil_client
+Requires: pluginlib roscpp

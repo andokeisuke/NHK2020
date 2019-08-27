@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: chapter4
+Description: Description of chapter4
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib 
+Requires: roscpp rospy geometry_msgs

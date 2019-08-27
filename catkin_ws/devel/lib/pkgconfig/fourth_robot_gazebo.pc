@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/devel
+
+Name: fourth_robot_gazebo
+Description: Description of fourth_robot_gazebo
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/devel/lib -lfourth_robot_gazebo
+Requires: fourth_robot_description fourth_robot_control

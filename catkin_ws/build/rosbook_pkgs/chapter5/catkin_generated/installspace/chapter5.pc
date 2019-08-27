@@ -1,0 +1,8 @@
+prefix=/home/ando/catkin_ws/install
+
+Name: chapter5
+Description: Description of chapter5
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/ando/catkin_ws/install/lib 
+Requires: rospy sensor_msgs std_msgs
