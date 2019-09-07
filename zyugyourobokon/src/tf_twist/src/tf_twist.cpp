@@ -13,7 +13,7 @@
 #define WHEEL_RADIUS 0.064
 
 float temp_theta = 0;
-int v = 30;
+float v ;
 
 ros::Subscriber sub;
 ros::Publisher	left_front_pub,
@@ -34,13 +34,21 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 	float linear_vel , angular_vel;
 
 	linear_vel  = sqrt((msg->linear.x)*(msg->linear.x)+(msg->linear.y)*(msg->linear.y));
+	if(linear_vel>1){
+		linear_vel=1;
+
+	}
+	if(linear_vel<-1){
+		linear_vel=-1;
+
+	}
 	angular_vel = msg->angular.z;
 
 	if(angular_vel != 0)//回転があるとき
 	{
 
 
-		temp_v = v;//angular_vel / WHEEL_RADIUS;
+		temp_v = v*linear_vel;//angular_vel / WHEEL_RADIUS;
 		temp_theta = 0;
 
                 if(angular_vel>0){
@@ -82,7 +90,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 			temp_v = 0;
 		}
 		
-		if(abs(linear_vel)>=1)temp_v = v;//linear_vel / WHEEL_RADIUS;
+		temp_v = v*linear_vel;//linear_vel / WHEEL_RADIUS;
 		left_front.st_target_deg = (temp_theta + M_PI/4)/M_PI*180;
 		left_rear.st_target_deg = (temp_theta - M_PI/4)/M_PI*180;
 		right_rear.st_target_deg = (temp_theta + M_PI/4)/M_PI*180;
@@ -113,6 +121,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 int main(int argc,char **argv){
 	ros::init(argc,argv,"sub_pub");
 	ros::NodeHandle nh;
+	nh.getParam("tf_twist/speed", v);
 
 	sub = nh.subscribe("sub",10,messageCallback);
 

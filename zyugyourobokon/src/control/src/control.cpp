@@ -9,10 +9,10 @@
 
 
 
-#define MAX_VEL 			1.8//m/s //launchファイルでなにも指定しなかったときの値
-#define MIN_VEL 			-1.8//m/s
-#define MAX_ANGULAR_VEL 	1.8//m/s
-#define MIN_ANGULAR_VEL 	-1.8//m/s
+#define MAX_VEL 			1.0//m/s //launchファイルでなにも指定しなかったときの値
+#define MIN_VEL 			-1.0//m/s
+#define MAX_ANGULAR_VEL 	1.0//m/s
+#define MIN_ANGULAR_VEL 	-1.0//m/s
 
 ros::Publisher twist_pub;
 
@@ -40,8 +40,8 @@ Joystick Joystick;
 
 void joy_Callback(const sensor_msgs::Joy& joy){
 
-  Joystick.linear_x = joy.axes[1];//左のスティック上下
-  Joystick.linear_y = joy.axes[0];//左のスティック左右
+  Joystick.linear_x = -joy.axes[0];//左のスティック上下
+  Joystick.linear_y = joy.axes[1];//左のスティック左右
 
   Joystick.right_spin = joy.buttons[4];//L2ボタン(コントローラの5番)
   Joystick.left_spin  = joy.buttons[5];//R2ボタン(コントローラの6番)
@@ -50,9 +50,10 @@ void joy_Callback(const sensor_msgs::Joy& joy){
 
   geometry_msgs::Twist twist;
   
-
-  twist.linear.x = map(Joystick.linear_x,-1,1,MIN_VEL,MAX_VEL);
-  twist.linear.y = map(Joystick.linear_y,-1,1,MIN_VEL,MAX_VEL);
+  twist.linear.x =  Joystick.linear_x;
+  twist.linear.y =  Joystick.linear_y;
+  //twist.linear.x = map(Joystick.linear_x,-1,1,MIN_VEL,MAX_VEL);
+  //twist.linear.y = map(Joystick.linear_y,-1,1,MIN_VEL,MAX_VEL);
 
   if(Joystick.right_spin == 1)
   {

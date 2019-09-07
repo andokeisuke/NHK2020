@@ -129,6 +129,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/ando/zyugyourobokon/build/control/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/custom_msg/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/tf_twist/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/odometry/cmake_install.cmake")
 
 endif()
 

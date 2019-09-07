@@ -1,0 +1,8 @@
+digraph G {
+"odom" -> "base_link"[label="Broadcaster: /odometry_node\nAverage rate: 30.201 Hz\nMost recent transform: 1567628290.521 ( 0.012 sec old)\nBuffer length: 4.967 sec\n"];
+"base_link" -> "hokuyo_link"[label="Broadcaster: /hokuyo_broadcaster\nAverage rate: 10.187 Hz\nMost recent transform: 1567628290.593 ( -0.060 sec old)\nBuffer length: 4.908 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1567628290.533"[ shape=plaintext ] ;
+ }->"odom";
+}
