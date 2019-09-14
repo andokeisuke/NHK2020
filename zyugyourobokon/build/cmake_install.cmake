@@ -130,6 +130,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/ando/zyugyourobokon/build/custom_msg/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/tf_twist/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/odometry/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/tf_listener/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/my_robo_2dav/cmake_install.cmake")
 
 endif()
 

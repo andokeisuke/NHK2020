@@ -1,10 +1,12 @@
 <launch>
 
-<node pkg="tf" type="static_transform_publisher" name="hokuyo_broadcaster" args="0 0.15 0.03 0 0 0 1 base_link laser 100" />
-<node pkg="urg_node" type="urg_node" name="urg_node" output="screen" />
+<node pkg="tf" type="static_transform_publisher" name="hokuyo_broadcaster" args="0 0.15 0.03  1.57079632679 0 0  base_link laser 100" />
+<node pkg="urg_node" type="urg_node" name="urg_node" output="screen" >
+    <param name="serial_port" value="/dev/ttyACM1"/>
+</node>
 
 <node pkg="joy" type="joy_node" name="joy_node">
-<param name="dev" type="string" value="/dev/input/js1"/>
+<param name="dev" type="string" value="/dev/input/js0"/>
 </node>
 
 <!--joy_twist-->
@@ -29,7 +31,7 @@
  type="serial_node.py"
  name="serial_node2">
 
-<param name="port" value="/dev/ttyACM3"/>
+<param name="port" value="/dev/ttyACM0"/>
 <param name="baud" value="57600"/>
 </node>
 
