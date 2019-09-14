@@ -13,6 +13,7 @@
 #define WHEEL_RADIUS 0.064
 
 float temp_theta = 0;
+double now_theta = 0;
 float v ;
 
 ros::Subscriber sub;
@@ -52,16 +53,26 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		temp_theta = 0;
 
                 if(angular_vel>0){
-			left_front.st_target_deg = 0;
-			left_rear.st_target_deg = 0;
-			right_rear.st_target_deg = 0;
-			right_front.st_target_deg = 0;
+
+			if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)<=M_PI)temp_theta=(int(now_theta/(2*M_PI)))*2*M_PI;
+			else if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)>M_PI)temp_theta=(int(now_theta/(2*M_PI)+1))*2*M_PI;
+
+			
+
+
+			left_front.st_target_deg = temp_theta/M_PI*180;
+			left_rear.st_target_deg = temp_theta/M_PI*180;
+			right_rear.st_target_deg = temp_theta/M_PI*180;
+			right_front.st_target_deg =temp_theta/M_PI*180;
 		}
 		else{
-			left_front.st_target_deg = 180;
-			left_rear.st_target_deg = 180;
-			right_rear.st_target_deg = 180;
-			right_front.st_target_deg = 180;
+
+			if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)<=M_PI)temp_theta=(int(now_theta/(2*M_PI)))*2*M_PI+M_PI;
+			else if(abs(((int(now_theta/(2*M_PI)))*2*M_PI-now_theta))>M_PI)temp_theta=(int(now_theta/(2*M_PI)+1))*2*M_PI+M_PI;			
+			left_front.st_target_deg = temp_theta/M_PI*180;
+			left_rear.st_target_deg = temp_theta/M_PI*180;
+			right_rear.st_target_deg = temp_theta/M_PI*180;
+			right_front.st_target_deg =temp_theta/M_PI*180;
 
 		}
 
@@ -81,15 +92,19 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 	        
 		if(!((msg->linear.y ==0)&&(msg->linear.x ==0)))
 		{                 
-			if(!((temp_theta<-M_PI*99/100)&&(temp_theta>-M_PI*99/100))){
+			//if(!((temp_theta<-M_PI*99/100)&&(temp_theta>-M_PI*99/100))){
 				temp_theta = atan2(msg->linear.y,msg->linear.x);
-				}
-		}
-		if((temp_theta<-M_PI*99/100)||(temp_theta>M_PI*99/100))
-		{
 
-			temp_v = 0;
+				if((temp_theta-now_theta)>M_PI)temp_theta=temp_theta-2*M_PI;
+				if((temp_theta-now_theta)<-M_PI)temp_theta=temp_theta+2*M_PI;
+				
+			//	}
 		}
+		//if((temp_theta<-M_PI*99/100)||(temp_theta>M_PI*99/100))
+		//{
+
+		//	temp_v = 0;
+		//}
 		
 		temp_v = v*linear_vel;//linear_vel / WHEEL_RADIUS;
 		left_front.st_target_deg = (temp_theta - M_PI*3/4)/M_PI*180;
@@ -126,6 +141,8 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 
 
 	}
+
+	now_theta = temp_theta;
 
 	left_front_pub.publish(left_front);
 	left_rear_pub.publish(left_rear);
