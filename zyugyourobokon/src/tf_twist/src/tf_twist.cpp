@@ -52,14 +52,14 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		temp_theta = 0;
 
                 if(angular_vel>0){
-			left_front.st_target_deg = 0;
-			left_rear.st_target_deg = 0;
+			left_front.st_target_deg = 180;
+			left_rear.st_target_deg = 180;
 			right_rear.st_target_deg = 0;
 			right_front.st_target_deg = 0;
 		}
 		else{
-			left_front.st_target_deg = 180;
-			left_rear.st_target_deg = 180;
+			left_front.st_target_deg = 0;
+			left_rear.st_target_deg = 0;
 			right_rear.st_target_deg = 180;
 			right_front.st_target_deg = 180;
 
@@ -67,8 +67,9 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 
 		
 
-		left_front.wh_target_vel = -temp_v;
-		left_rear.wh_target_vel = -temp_v;
+
+		left_front.wh_target_vel = temp_v;
+		left_rear.wh_target_vel = temp_v;
 		right_rear.wh_target_vel = -temp_v;
 		right_front.wh_target_vel = -temp_v;
 
@@ -108,6 +109,21 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		left_rear.wh_target_vel = 0;
 		right_rear.wh_target_vel = 0;
 		right_front.wh_target_vel = 0;
+
+	}
+
+	if(msg->angular.x){
+
+		left_front.st_target_deg = 0;
+		left_rear.st_target_deg = 0;
+		right_rear.st_target_deg = 0;
+		right_front.st_target_deg = 0;
+		left_front.wh_target_vel = 0;
+		left_rear.wh_target_vel = 0;
+		right_rear.wh_target_vel = 0;
+		right_front.wh_target_vel = 0;
+		
+
 
 	}
 

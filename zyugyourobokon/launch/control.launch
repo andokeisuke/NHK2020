@@ -6,7 +6,7 @@
 </node>
 
 <node pkg="joy" type="joy_node" name="joy_node">
-<param name="dev" type="string" value="/dev/input/js0"/>
+<param name="dev" type="string" value="/dev/input/js1"/>
 </node>
 
 <!--joy_twist-->

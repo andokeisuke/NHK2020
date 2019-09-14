@@ -32,7 +32,7 @@ public:
 	float linear_y;
 	float right_spin;
 	float left_spin;
-	float shagai_shoot;
+	float initial;
 
 };
 
@@ -45,6 +45,7 @@ void joy_Callback(const sensor_msgs::Joy& joy){
 
   Joystick.right_spin = joy.buttons[4];//L2ボタン(コントローラの5番)
   Joystick.left_spin  = joy.buttons[5];//R2ボタン(コントローラの6番)
+  Joystick.initial = joy.buttons[8];//Lスティック押し込み
 
 
 
@@ -63,6 +64,9 @@ void joy_Callback(const sensor_msgs::Joy& joy){
   {
 	twist.angular.z = MAX_ANGULAR_VEL;
   }
+
+  if(Joystick.initial)twist.angular.x=1;
+  else twist.angular.x=0;
 
   twist_pub.publish(twist);
 
