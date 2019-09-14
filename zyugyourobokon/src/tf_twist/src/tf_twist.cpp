@@ -52,14 +52,14 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		temp_theta = 0;
 
                 if(angular_vel>0){
-			left_front.st_target_deg = 180;
-			left_rear.st_target_deg = 180;
+			left_front.st_target_deg = 0;
+			left_rear.st_target_deg = 0;
 			right_rear.st_target_deg = 0;
 			right_front.st_target_deg = 0;
 		}
 		else{
-			left_front.st_target_deg = 0;
-			left_rear.st_target_deg = 0;
+			left_front.st_target_deg = 180;
+			left_rear.st_target_deg = 180;
 			right_rear.st_target_deg = 180;
 			right_front.st_target_deg = 180;
 
@@ -92,8 +92,8 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		}
 		
 		temp_v = v*linear_vel;//linear_vel / WHEEL_RADIUS;
-		left_front.st_target_deg = (temp_theta + M_PI/4)/M_PI*180;
-		left_rear.st_target_deg = (temp_theta - M_PI/4)/M_PI*180;
+		left_front.st_target_deg = (temp_theta - M_PI*3/4)/M_PI*180;
+		left_rear.st_target_deg = (temp_theta + M_PI*3/4)/M_PI*180;
 		right_rear.st_target_deg = (temp_theta + M_PI/4)/M_PI*180;
 		right_front.st_target_deg = (temp_theta - M_PI/4)/M_PI*180;
 
