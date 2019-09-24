@@ -3,7 +3,7 @@
 #include "ti2c.h"
 #include "pid_driver.h"
 
-uint8_t addr = 0x34;
+uint8_t addr = 0x10;
 PidDriver m1 = PidDriver(addr);
 
 int degree = 0;

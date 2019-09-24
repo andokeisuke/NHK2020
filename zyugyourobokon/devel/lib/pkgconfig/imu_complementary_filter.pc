@@ -1,0 +1,8 @@
+prefix=/home/ando/zyugyourobokon/devel
+
+Name: imu_complementary_filter
+Description: Description of imu_complementary_filter
+Version: 1.0.15
+Cflags: -I/home/ando/zyugyourobokon/src/imu_tools/imu_complementary_filter/include
+Libs: -L/home/ando/zyugyourobokon/devel/lib -lcomplementary_filter
+Requires: message_filters roscpp sensor_msgs std_msgs tf

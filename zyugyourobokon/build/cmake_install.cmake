@@ -126,10 +126,18 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ando/zyugyourobokon/build/gtest/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/imu_tools/imu_tools/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/control/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/custom_msg/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/fourws/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/navigation/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/tf_twist/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/imu_tools/imu_complementary_filter/cmake_install.cmake")
   include("/home/ando/zyugyourobokon/build/odometry/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/imu_tools/imu_filter_madgwick/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/tf_listener/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/imu_tools/rviz_imu_plugin/cmake_install.cmake")
+  include("/home/ando/zyugyourobokon/build/my_robo_2dav/cmake_install.cmake")
 
 endif()
 

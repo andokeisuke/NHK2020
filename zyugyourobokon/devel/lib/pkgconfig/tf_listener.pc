@@ -1,0 +1,8 @@
+prefix=/home/ando/zyugyourobokon/devel
+
+Name: tf_listener
+Description: Description of tf_listener
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ando/zyugyourobokon/devel/lib 
+Requires: 
