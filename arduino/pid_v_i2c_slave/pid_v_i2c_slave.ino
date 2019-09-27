@@ -168,7 +168,7 @@ void requestEvent(){
   
   char buf[10] = {};
   int num;
-  num = sprintf(buf, "%d$", int(enc));
+  num = sprintf(buf, "%d$", int (v*100);
 
 
   receiver.sendStr(buf);
