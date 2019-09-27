@@ -87,7 +87,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 			right_rear.wh_target_vel = temp_v;
 			right_front.wh_target_vel = temp_v;
 
-
+	right_front.wh_target_vel = temp_v;
 
 		}
 
@@ -154,10 +154,12 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		right_rear.st_target_deg = (temp_theta + M_PI/4)/M_PI*180;
 		right_front.st_target_deg = (temp_theta - M_PI/4)/M_PI*180;
 
-		left_front.wh_target_vel = -temp_v*0.4;
+		left_front.wh_target_vel = -temp_v;
 		left_rear.wh_target_vel = -temp_v*2;
 		right_rear.wh_target_vel = -temp_v*2;
-		right_front.wh_target_vel = -temp_v*0.4;
+		right_front.wh_target_vel = -temp_v;
+
+
 		
 	//	if(abs(const_pose-now_pose)>1){
 	//		if(const_pose-now_pose>0){

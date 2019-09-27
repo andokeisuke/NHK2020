@@ -52,4 +52,6 @@
     <rosparam file="$(find my_robo_2dav)/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find my_robo_2dav)/base_local_planner_params.yaml" command="load" />
   </node>
+
+<node pkg="tf_listener" type="tf_listener_node" name="tf_listener" output="screen" />
 </launch>

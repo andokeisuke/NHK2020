@@ -46,11 +46,11 @@ int main(int argc, char **argv){
     struct target_point first_point,second_point,third_point,forth_point;
 
     first_point.x = 0.0;
-    first_point.y = 1.0;
-    second_point.x = 1.0;
-    second_point.y = 1.0;
+    first_point.y = 2.5;
+    second_point.x = 0.6;
+    second_point.y = 2.5;
 
-    third_point.x = 1.0;
+    third_point.x = 0.6;
     third_point.y = 0.0;
 
     forth_point.x = 0.0;
@@ -59,7 +59,7 @@ int main(int argc, char **argv){
     while(n.ok()){
 	   //ros::spinOnce();
  
-
+ROS_ERROR("log:%i", status);
 	if(status ==1){
 		b = atan2((first_point.y-y),(first_point.x-x));
 		
