@@ -15,15 +15,18 @@
     double preenc = 0;
     double x = 0;
     double y  = 0;
+    double z = 0;
     double w = 0;
     double r = 0;
     double th = 0;
     double a = 0;
+    double b = 0;
 geometry_msgs::Quaternion odom_quat ;
 void twist_Callback(const geometry_msgs::Twist::ConstPtr& twist)
    {
 	x = twist->linear.x;
 	y = twist->linear.y;
+	z = twist->linear.z;
 	w = twist->angular.z;
         r = sqrt(x*x+y*y);
 
@@ -35,22 +38,31 @@ void enc_Callback(const std_msgs::Int64::ConstPtr& enc)
    {
 
 	double left_rear_enc = enc->data; // 右車軸の位置[rad]
-	double distance = left_rear_enc/7600;//1084*M_PI*0.064;
+	double distance = left_rear_enc/3700;//1084*M_PI*0.064;//３７００：１ｍあたりのエンコーダ増加量
 	a = atan2(y,x);		
 
-     //if(distance-predistance>=0){
-     if(w == 0&&r !=0){//回転せず止まっていない時
-     	state_odom_x=state_odom_x+(distance-predistance)*cos(a+th);
-     	state_odom_y=state_odom_y+ (distance-predistance)*sin(a+th);
-     }
-    th =th- (enc->data-preenc)/1400*M_PI/2* abs(w);
-     odom_quat = tf::createQuaternionMsgFromYaw(th);
+	if(z != 0){//旋回の時
+		b = -(enc->data-preenc)/2600*(M_PI/2*0.35)/0.35;
+		
+		state_odom_x=state_odom_x+0.7*sin(b/2)*cos(b/2+th);
+     		state_odom_y=state_odom_y+ 0.7*sin(b/2)*sin(b/2+th);
+		th =th+b;
 
 
+	}
+	else{
+
+	     if(w == 0&&r !=0){//回転せず止まっていない時
+	     	state_odom_x=state_odom_x+(distance-predistance)*cos(a+th);
+	     	state_odom_y=state_odom_y+ (distance-predistance)*sin(a+th);
+	     }
+	    th =th- (enc->data-preenc)/700*M_PI/2* abs(w);//７００：９０度あたりのエンコーダの増加量
+	     odom_quat = tf::createQuaternionMsgFromYaw(th);
+
+	}
 	predistance  = distance;
 	preenc = enc->data;
-     //}
-
+ 
    }
 
 

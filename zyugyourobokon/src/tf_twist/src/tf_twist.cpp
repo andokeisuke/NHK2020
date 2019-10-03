@@ -7,6 +7,7 @@
 
 #include <custom_msg/wh_msg.h>
 #include <geometry_msgs/Twist.h>
+#include <std_msgs/Int16.h>
 #include <math.h>
 #include <sstream>
 
@@ -16,7 +17,7 @@ float temp_theta = 0;
 double now_theta = 0;
 float v ;
 
-float now_pose,const_pose;
+int now_pose,const_pose;
 
 ros::Subscriber sub,pose_sub;
 ros::Publisher	left_front_pub,
@@ -27,7 +28,7 @@ ros::Publisher	left_front_pub,
 
 custom_msg::wh_msg left_front,left_rear,right_front,right_rear;
 
-void pose_messageCallback(const std_msgs::Float64::ConstPtr& pose){
+void pose_messageCallback(const std_msgs::Int16::ConstPtr& pose){
 
 	now_pose = pose->data;
 
@@ -87,7 +88,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 			right_rear.wh_target_vel = temp_v;
 			right_front.wh_target_vel = temp_v;
 
-	right_front.wh_target_vel = temp_v;
+
 
 		}
 
@@ -106,14 +107,14 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 
 			
 		left_front.st_target_deg = temp_theta/M_PI*180+(atan(455/75)-M_PI/4)/M_PI*180;
-		left_rear.st_target_deg = temp_theta/M_PI*180+(atan(455/75)-M_PI*3/4)/M_PI*180;
+		left_rear.st_target_deg = temp_theta/M_PI*180-(atan(455/75)-M_PI/4)/M_PI*180;
 		right_rear.st_target_deg = temp_theta/M_PI*180-(atan(275/75)-M_PI*3/4)/M_PI*180;
 		right_front.st_target_deg =temp_theta/M_PI*180+(atan(275/75)-M_PI*3/4)/M_PI*180;		
 
                 if(msg->linear.z>0){
 
-			left_front.wh_target_vel = -temp_v;
-			left_rear.wh_target_vel = -temp_v;
+			left_front.wh_target_vel = -temp_v*91/55;
+			left_rear.wh_target_vel = -temp_v*91/55;
 			right_rear.wh_target_vel = +temp_v;
 			right_front.wh_target_vel = temp_v;
 
@@ -121,8 +122,8 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		}
 		else{
 
-			left_front.wh_target_vel = temp_v;
-			left_rear.wh_target_vel = temp_v;
+			left_front.wh_target_vel = temp_v*91/55;
+			left_rear.wh_target_vel = temp_v*91/55;
 			right_rear.wh_target_vel = -temp_v;
 			right_front.wh_target_vel = -temp_v;
 
@@ -143,8 +144,8 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 			
 				temp_theta = atan2(msg->linear.y,msg->linear.x);
 
-				if((temp_theta-now_theta)>M_PI)temp_theta=temp_theta-2*M_PI;
-				if((temp_theta-now_theta)<-M_PI)temp_theta=temp_theta+2*M_PI;
+				//if((temp_theta-now_theta)>M_PI)temp_theta=temp_theta-2*M_PI;
+				//if((temp_theta-now_theta)<-M_PI)temp_theta=temp_theta+2*M_PI;
 				
 		}
 
@@ -154,12 +155,10 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		right_rear.st_target_deg = (temp_theta + M_PI/4)/M_PI*180;
 		right_front.st_target_deg = (temp_theta - M_PI/4)/M_PI*180;
 
-		left_front.wh_target_vel = -temp_v;
-		left_rear.wh_target_vel = -temp_v*2;
-		right_rear.wh_target_vel = -temp_v*2;
-		right_front.wh_target_vel = -temp_v;
-
-
+		left_front.wh_target_vel = -temp_v;//*0.8;
+		left_rear.wh_target_vel = -temp_v;//*2.5;
+		right_rear.wh_target_vel = -temp_v;//*2.5;
+		right_front.wh_target_vel = -temp_v;//*0.8;
 		
 	//	if(abs(const_pose-now_pose)>1){
 	//		if(const_pose-now_pose>0){
