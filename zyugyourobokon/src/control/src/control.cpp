@@ -32,7 +32,13 @@ public:
 	float linear_y;
 	float right_spin;
 	float left_spin;
-	float shagai_shoot;
+	float initial;
+	int axes_x;
+	int axes_y;
+	float right_turn;
+	float left_turn;
+	int right_90;
+	int left_90;
 
 };
 
@@ -43,8 +49,19 @@ void joy_Callback(const sensor_msgs::Joy& joy){
   Joystick.linear_x = -joy.axes[0];//左のスティック上下
   Joystick.linear_y = joy.axes[1];//左のスティック左右
 
-  Joystick.right_spin = joy.buttons[4];//L2ボタン(コントローラの5番)
-  Joystick.left_spin  = joy.buttons[5];//R2ボタン(コントローラの6番)
+
+  Joystick.right_90 = joy.buttons[3];//4ボタン(コントローラの5番)
+  Joystick.left_90  = joy.buttons[0];//1ボタン(コントローラの6番)
+
+  Joystick.right_spin = joy.buttons[4];//L1ボタン(コントローラの5番)
+  Joystick.left_spin  = joy.buttons[5];//R1ボタン(コントローラの6番)
+  Joystick.right_turn = joy.buttons[6];//L2ボタン(コントローラの5番)
+  Joystick.left_turn  = joy.buttons[7];//R2ボタン(コントローラの6番)
+
+  Joystick.initial = joy.buttons[8];//Lスティック押し込み
+
+  Joystick.axes_x = -joy.axes[4];//上のスティック上下
+  Joystick.axes_y = joy.axes[5];//上の左のスティック左右
 
 
 
@@ -62,6 +79,42 @@ void joy_Callback(const sensor_msgs::Joy& joy){
   else if(Joystick.left_spin == 1)
   {
 	twist.angular.z = MAX_ANGULAR_VEL;
+  }
+
+
+  if(Joystick.right_turn == 1)
+  {
+	twist.linear.z = 1;
+  }    
+  else if(Joystick.left_turn == 1)
+  {
+	twist.linear.z = -1;
+  }
+
+  if(Joystick.initial)twist.angular.x=1;
+  else twist.angular.x=0;
+
+    if(Joystick.right_90 == 1)
+  {
+	twist.angular.x = 1;
+  }    
+  else if(Joystick.left_90 == 1)
+  {
+	twist.angular.x = -1;
+  }
+
+  if(Joystick.axes_x != 0){
+		twist.linear.x = Joystick.axes_x;
+		twist.linear.y = 0;
+
+
+  }
+
+  if(Joystick.axes_y != 0){
+		twist.linear.y = Joystick.axes_y;
+		twist.linear.x = 0;
+
+
   }
 
   twist_pub.publish(twist);
