@@ -94,18 +94,36 @@ geometry_msgs::Twist automove(int *flag){	//自立走行；直進
 
 	if((fabs(destination[flag].y-y)<margin)&&(fabs(destination[flag].x-x)<margin)){
 		flag = -flag;
+		order.linear.z = 1;
+                //ここで少し待つ
 	}
 	return order;
 }
 
 
+geometry_msgs::Twist automove_mili(int *flag){	//自立走行；直進(ターン終了直後用)
+	geometry_msgs::Twist order;
+
+	b = atan2((destination[flag].y-y),(destination[flag].x-x));
+	
+	order.linear.x = cos(b-theta)/10000;
+	order.linear.y = sin(b-theta)/10000;
+	order.linear.z = 0;
+
+	return order;
+}
+
 geometry_msgs::Twist autoturn(int *flag){	//自立走行；ターン
 	geometry_msgs::Twist order;
 
+        order.linear.x = 1;
+        order.linear.y = 1;
 	order.linear.z = 1;	//右回りでターン
 
 	if(fabs(atan2(fabs(destination[-flag + 1].y - destination[-flag].y),fabs(destination[-flag + 1].x - destination[-flag].x)) - theta) < margin_a)){
 		flag = -flag + 1;
+		automove_mili(&flag);
+		//ここで少し待つ
 	}
 	return order;
 }
