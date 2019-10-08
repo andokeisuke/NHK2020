@@ -104,7 +104,7 @@ geometry_msgs::Twist autoturn(int *flag){	//自立走行；ターン
 
 	order.linear.z = 1;	//右回りでターン
 
-	if((fabs(destination[-flag + 1].y - destination[-flag].y) < margin_a) && (fabs(destination[-flag + 1].x - destination[-flag].x) < margin_a)){
+	if(fabs(atan2(fabs(destination[-flag + 1].y - destination[-flag].y),fabs(destination[-flag + 1].x - destination[-flag].x)) - theta) < margin_a)){
 		flag = -flag + 1;
 	}
 	return order;
