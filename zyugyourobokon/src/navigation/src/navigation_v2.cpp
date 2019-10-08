@@ -10,6 +10,8 @@
 ０より小さい場合はターン
 */
 
+#define WT (1.0)
+
 //自機の座標
 double x = 0;
 double y  = 0;
@@ -86,6 +88,12 @@ int main(int argc, char **argv){
     }
 }
 
+//ウェイト関数
+void waits(double wtime)
+	for(ros::Time ros_begin = ros::Time::now(), ros_now = ros_begin;
+	ros_now.sec - ros_begin.sec) <= wtime;
+	ros_now = ros::Time::now());
+
 /*
  * 自立走行関数
  * automove,autoturn
@@ -104,7 +112,7 @@ geometry_msgs::Twist automove(int *flag){	//自立走行；直進
 	if((fabs(destination[flag].y-y)<margin)&&(fabs(destination[flag].x-x)<margin)){
 		flag = -flag;
 		order.linear.z = 1;
-                //ここで少し待つ
+                waits(WT);
 	}
 	return order;
 }
@@ -132,7 +140,7 @@ geometry_msgs::Twist autoturn(int *flag){	//自立走行；ターン
 	if(fabs(atan2(fabs(destination[-flag + 1].y - destination[-flag].y),fabs(destination[-flag + 1].x - destination[-flag].x)) - theta) < margin_a)){
 		flag = -flag + 1;
 		automove_mili(&flag);
-		//ここで少し待つ
+		waits(WT);
 	}
 	return order;
 }
