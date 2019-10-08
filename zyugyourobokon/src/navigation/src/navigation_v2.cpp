@@ -1,5 +1,6 @@
 #include <ros/ros.h>  // rosで必要なヘッダーファイル
 #include <geometry_msgs/Twist.h> // ロボットを動かすために必要
+#include <std_msgs/Int32.h>	//タッチセンサーの値
 
 /*
 フラグ変数(status, flag)の説明
@@ -32,6 +33,9 @@ destination[4].y = 0.0;
 double margin = 0.01;	//距離
 double margin_a = 5.0;	//角度
 
+//タッチセンサーの値
+int istouch;
+
 struct target_point{
 	double x;
 	double y;
@@ -45,6 +49,8 @@ void spe_Callback(const geometry_msgs::Twist::ConstPtr& twist){
 	theta = twist->angular.z/180*M_PI;
 }
 
+void touch_callback(std_msgs::Int32 touch) istouch = touch.data;
+
 
 int main(int argc, char **argv){
     ros::init(argc, argv, "navigation");
@@ -52,6 +58,7 @@ int main(int argc, char **argv){
 
     ros::Subscriber spe_sub = n.subscribe<geometry_msgs::Twist>("/spe", 1, spe_Callback);
     ros::Publisher comand_pub = n.advertise<geometry_msgs::Twist>("/sub",1000);
+    ros::Subscriber touch_sub = n.subscribe<std_msgs::Int32>("/touch_sensor", 1, touch_callback);
     ros::Rate r(30.0);
 
     geometry_msgs::Twist comand;	//動作指示用変数
@@ -59,18 +66,20 @@ int main(int argc, char **argv){
 
     while(n.ok()){	//Main Loop
  
-	ROS_ERROR("log:%i", status);
-
-	if(status > 0)	//直進
-		comand_pub.publish(automove(&status));
-	else if(status < 0)	//ターン
-		comand_pub.publish(autoturn(&status));
-	else if(fabs(status) > 4){
-		comand.linear.x = 0;
-		comand.linear.y = 0;
-		comand_pub.publish(comand);
-		status = 1;
+	if(istouch == 1){
+		ROS_ERROR("log:%i", status);
+	
+		if(status > 0)	//直進
+			comand_pub.publish(automove(&status));
+		else if(status < 0)	//ターン
+			comand_pub.publish(autoturn(&status));
+		else if(fabs(status) > 4){
+			comand.linear.x = 0;
+			comand.linear.y = 0;
+			comand_pub.publish(comand);
+			status = 1;
 	}
+    }
 
     ros::spinOnce();
     r.sleep();
