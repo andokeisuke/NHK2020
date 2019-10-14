@@ -30,6 +30,7 @@ class Joystick
 public:
 	float linear_x;
 	float linear_y;
+	float spin;
 	float right_spin;
 	float left_spin;
 	float initial;
@@ -62,6 +63,8 @@ void joy_Callback(const sensor_msgs::Joy& joy){
 
   Joystick.axes_x = -joy.axes[4];//上のスティック上下
   Joystick.axes_y = joy.axes[5];//上の左のスティック左右
+
+  Joystick.spin = joy.axes[2];//右スティックの左右
 
 
 
@@ -114,8 +117,13 @@ void joy_Callback(const sensor_msgs::Joy& joy){
 		twist.linear.y = Joystick.axes_y;
 		twist.linear.x = 0;
 
-
+ 
   }
+
+
+  twist.angular.y = Joystick.spin;
+
+	
 
   twist_pub.publish(twist);
 

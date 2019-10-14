@@ -56,11 +56,11 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
+ add_service_files(
+   FILES
+   etoe.srv
 #   Service2.srv
-# )
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -136,7 +136,12 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
  add_executable(tf_twist src/tf_twist.cpp)
+ add_executable(tf_twist2 src/tf_twist2.cpp)
+ add_executable(tf_twist3 src/tf_twist3.cpp)
 target_link_libraries(tf_twist ${catkin_LIBRARIES})
+target_link_libraries(tf_twist2 ${catkin_LIBRARIES})
+target_link_libraries(tf_twist3 ${catkin_LIBRARIES})
+
 
 
 ## Rename C++ executable without prefix

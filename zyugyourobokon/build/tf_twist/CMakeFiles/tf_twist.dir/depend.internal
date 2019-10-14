@@ -63,6 +63,7 @@ tf_twist/CMakeFiles/tf_twist.dir/src/tf_twist.cpp.o
  /opt/ros/kinetic/include/ros/wall_timer_options.h
  /opt/ros/kinetic/include/rosconsole/macros_generated.h
  /opt/ros/kinetic/include/std_msgs/Float64.h
+ /opt/ros/kinetic/include/std_msgs/Int16.h
  /opt/ros/kinetic/include/std_msgs/String.h
  /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h

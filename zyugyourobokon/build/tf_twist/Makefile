@@ -100,16 +100,16 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install/strip
-install/strip/fast: install/strip
+# Special rule for the target test
+test/fast: test
 
-.PHONY : install/strip/fast
+.PHONY : test/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -122,16 +122,16 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target install/strip
+install/strip/fast: install/strip
 
-.PHONY : test/fast
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -180,6 +180,36 @@ tf_twist/fast:
 	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist.dir/build.make tf_twist/CMakeFiles/tf_twist.dir/build
 .PHONY : tf_twist/fast
 
+# Convenience name for target.
+tf_twist/CMakeFiles/tf_twist2.dir/rule:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f CMakeFiles/Makefile2 tf_twist/CMakeFiles/tf_twist2.dir/rule
+.PHONY : tf_twist/CMakeFiles/tf_twist2.dir/rule
+
+# Convenience name for target.
+tf_twist2: tf_twist/CMakeFiles/tf_twist2.dir/rule
+
+.PHONY : tf_twist2
+
+# fast build rule for target.
+tf_twist2/fast:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist2.dir/build.make tf_twist/CMakeFiles/tf_twist2.dir/build
+.PHONY : tf_twist2/fast
+
+# Convenience name for target.
+tf_twist/CMakeFiles/tf_twist3.dir/rule:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f CMakeFiles/Makefile2 tf_twist/CMakeFiles/tf_twist3.dir/rule
+.PHONY : tf_twist/CMakeFiles/tf_twist3.dir/rule
+
+# Convenience name for target.
+tf_twist3: tf_twist/CMakeFiles/tf_twist3.dir/rule
+
+.PHONY : tf_twist3
+
+# fast build rule for target.
+tf_twist3/fast:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist3.dir/build.make tf_twist/CMakeFiles/tf_twist3.dir/build
+.PHONY : tf_twist3/fast
+
 src/tf_twist.o: src/tf_twist.cpp.o
 
 .PHONY : src/tf_twist.o
@@ -207,6 +237,60 @@ src/tf_twist.cpp.s:
 	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist.dir/build.make tf_twist/CMakeFiles/tf_twist.dir/src/tf_twist.cpp.s
 .PHONY : src/tf_twist.cpp.s
 
+src/tf_twist2.o: src/tf_twist2.cpp.o
+
+.PHONY : src/tf_twist2.o
+
+# target to build an object file
+src/tf_twist2.cpp.o:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist2.dir/build.make tf_twist/CMakeFiles/tf_twist2.dir/src/tf_twist2.cpp.o
+.PHONY : src/tf_twist2.cpp.o
+
+src/tf_twist2.i: src/tf_twist2.cpp.i
+
+.PHONY : src/tf_twist2.i
+
+# target to preprocess a source file
+src/tf_twist2.cpp.i:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist2.dir/build.make tf_twist/CMakeFiles/tf_twist2.dir/src/tf_twist2.cpp.i
+.PHONY : src/tf_twist2.cpp.i
+
+src/tf_twist2.s: src/tf_twist2.cpp.s
+
+.PHONY : src/tf_twist2.s
+
+# target to generate assembly for a file
+src/tf_twist2.cpp.s:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist2.dir/build.make tf_twist/CMakeFiles/tf_twist2.dir/src/tf_twist2.cpp.s
+.PHONY : src/tf_twist2.cpp.s
+
+src/tf_twist3.o: src/tf_twist3.cpp.o
+
+.PHONY : src/tf_twist3.o
+
+# target to build an object file
+src/tf_twist3.cpp.o:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist3.dir/build.make tf_twist/CMakeFiles/tf_twist3.dir/src/tf_twist3.cpp.o
+.PHONY : src/tf_twist3.cpp.o
+
+src/tf_twist3.i: src/tf_twist3.cpp.i
+
+.PHONY : src/tf_twist3.i
+
+# target to preprocess a source file
+src/tf_twist3.cpp.i:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist3.dir/build.make tf_twist/CMakeFiles/tf_twist3.dir/src/tf_twist3.cpp.i
+.PHONY : src/tf_twist3.cpp.i
+
+src/tf_twist3.s: src/tf_twist3.cpp.s
+
+.PHONY : src/tf_twist3.s
+
+# target to generate assembly for a file
+src/tf_twist3.cpp.s:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f tf_twist/CMakeFiles/tf_twist3.dir/build.make tf_twist/CMakeFiles/tf_twist3.dir/src/tf_twist3.cpp.s
+.PHONY : src/tf_twist3.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -217,13 +301,21 @@ help:
 	@echo "... install"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... tf_twist"
-	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... test"
+	@echo "... tf_twist"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... tf_twist2"
+	@echo "... tf_twist3"
 	@echo "... src/tf_twist.o"
 	@echo "... src/tf_twist.i"
 	@echo "... src/tf_twist.s"
+	@echo "... src/tf_twist2.o"
+	@echo "... src/tf_twist2.i"
+	@echo "... src/tf_twist2.s"
+	@echo "... src/tf_twist3.o"
+	@echo "... src/tf_twist3.i"
+	@echo "... src/tf_twist3.s"
 .PHONY : help
 
 

@@ -17,7 +17,7 @@
 
 #include "ti2c.h"
 #include "ise_motor_driver.h"
-#define ENC_PER_DEG 5100//360度のエンコーダの値
+#define ENC_PER_DEG 2550//360度のエンコーダの値
 
 
 ros::NodeHandle  nh;

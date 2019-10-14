@@ -19,7 +19,7 @@ float v ;
 
 int now_pose,const_pose;
 
-ros::Subscriber sub,pose_sub;
+ros::Subscriber sub,imu_sub;
 ros::Publisher	left_front_pub,
 				left_rear_pub,
 				right_front_pub,
@@ -28,9 +28,9 @@ ros::Publisher	left_front_pub,
 
 custom_msg::wh_msg left_front,left_rear,right_front,right_rear;
 
-void pose_messageCallback(const std_msgs::Int16::ConstPtr& pose){
+void imu_messageCallback(const std_msgs::Int16::ConstPtr& imu){
 
-	now_pose = pose->data;
+	now_pose = imu->data;
 
 }
 
@@ -63,8 +63,8 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		temp_v = v*linear_vel;//angular_vel / WHEEL_RADIUS;
 		temp_theta = 0;
 
-		if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)<=M_PI)temp_theta=(int(now_theta/(2*M_PI)))*2*M_PI;
-		else if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)>M_PI)temp_theta=(int(now_theta/(2*M_PI)+1))*2*M_PI;
+		//if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)<=M_PI)temp_theta=(int(now_theta/(2*M_PI)))*2*M_PI;
+		//else if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)>M_PI)temp_theta=(int(now_theta/(2*M_PI)+1))*2*M_PI;
 
 			
 		left_front.st_target_deg = temp_theta/M_PI*180;
@@ -269,7 +269,7 @@ int main(int argc,char **argv){
 	nh.getParam("tf_twist/speed", v);
 
 	sub = nh.subscribe("sub",10,messageCallback);
-	pose_sub = nh.subscribe("imu",10,pose_messageCallback);
+	imu_sub = nh.subscribe("imu",10,imu_messageCallback);
 	left_front_pub = nh.advertise<custom_msg::wh_msg>("left_front",1);
 	left_rear_pub = nh.advertise<custom_msg::wh_msg>("left_rear",1);
 	right_front_pub = nh.advertise<custom_msg::wh_msg>("right_front",1);

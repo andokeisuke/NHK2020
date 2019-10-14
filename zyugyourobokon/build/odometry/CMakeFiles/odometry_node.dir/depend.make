@@ -8,6 +8,7 @@ odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/inclu
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseWithCovariance.h
+odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseWithCovarianceStamped.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/geometry_msgs/QuaternionStamped.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Transform.h
@@ -76,6 +77,7 @@ odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/inclu
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/rosconsole/macros_generated.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/sensor_msgs/JointState.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
+odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/std_msgs/Int16.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/std_msgs/Int64.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/Matrix3x3.h
 odometry/CMakeFiles/odometry_node.dir/src/odometry.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/MinMax.h
