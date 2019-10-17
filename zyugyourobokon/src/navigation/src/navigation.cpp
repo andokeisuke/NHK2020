@@ -8,11 +8,13 @@ double x = 0;
 double y  = 0;
 double theta = 0;
 double b = 0;
+double k;
 
-double margin = 0.01;
+double margin;
 float status =1;
 double pretheta = 0;
 float prestatus;
+double count =0;
 
 struct target_point{
 
@@ -50,17 +52,28 @@ int main(int argc, char **argv){
 
     
     struct target_point first_point,second_point,third_point,forth_point;
+    n.getParam("navigation/first_point_x", first_point.x);
+    n.getParam("navigation/first_point_y", first_point.y);
+    n.getParam("navigation/second_point_x", second_point.x);
+    n.getParam("navigation/second_point_y", second_point.y);
+    n.getParam("navigation/third_point_x", third_point.x);
+    n.getParam("navigation/third_point_y", third_point.y);
+    n.getParam("navigation/forth_point_x", forth_point.x);
+    n.getParam("navigation/forth_point_y", forth_point.y);
 
-    first_point.x = 0.23;
-    first_point.y = 3.0;
-    second_point.x = 1.26;
-    second_point.y = 3.0;
+    n.getParam("navigation/k", k);
+    n.getParam("navigation/margin", margin);
 
-    third_point.x = 1.26;
-    third_point.y = 0.34;
+    first_point.x = first_point.x ;//-0.6;
+    first_point.y = first_point.y-0.4;// -0.6;
+    second_point.x = second_point.x-0.4;//-0.6;
+    second_point.y = second_point.y;//-0.6;
 
-    forth_point.x = 0.23;
-    forth_point.y = 0.34;
+    third_point.x = third_point.x;//-0.6;
+    third_point.y = third_point.y+0.4;//-0.6;
+
+    forth_point.x = forth_point.x+0.4;//-0.6;
+    forth_point.y = forth_point.y;//-0.6;
 
     while(n.ok()){
 	   //ros::spinOnce();
@@ -71,13 +84,21 @@ int main(int argc, char **argv){
 				   ROS_ERROR("log:%f", status);
 		comand.linear.x = cos(b-theta);
 		comand.linear.y = sin(b-theta);
-		comand.angular.y = -0.01*theta*180/M_PI;
+		comand.angular.y = -k*theta*180/M_PI;
 
 
 		comand_pub.publish(comand);
 		if((fabs(first_point.y-y)<margin)&&(fabs(first_point.x-x)<margin)){
 			prestatus = status;
 			status = -1;
+			comand.linear.z = 1;
+			comand_pub.publish(comand);
+
+			ros::Time start = ros::Time::now();
+			ros::Time now = ros::Time::now();
+			while(!((now - start) > ros::Duration(3.0))){
+			now = ros::Time::now();
+		}
 
 		}
 	}
@@ -112,12 +133,20 @@ ROS_ERROR("log:%f", fabs(first_point.y-y));
 		
 		comand.linear.x = cos(b-theta);
 		comand.linear.y = sin(b-theta);
-		comand.angular.y = 0.01*(-90-theta*180/M_PI);
+		comand.angular.y = k*(-90-theta*180/M_PI);
 		comand_pub.publish(comand);
 		
 		if((fabs(second_point.y-y)<margin)&&(fabs(second_point.x-x)<margin)){
 			prestatus = status;
 			status = -1;
+			comand.linear.z = 1;
+			comand_pub.publish(comand);
+
+			ros::Time start = ros::Time::now();
+			ros::Time now = ros::Time::now();
+			while(!((now - start) > ros::Duration(3.0))){
+			now = ros::Time::now();
+		}
 		}
 
 	}
@@ -146,12 +175,20 @@ ROS_ERROR("log:%f", fabs(first_point.y-y));
 		 ROS_ERROR("log:%f", status);
 		comand.linear.x = cos(b-theta);
 		comand.linear.y = sin(b-theta);
-		comand.angular.y = 0.01*(-180-theta*180/M_PI);
+		comand.angular.y = k*(-180-theta*180/M_PI);
 		comand_pub.publish(comand);
 		
 		if((fabs(third_point.y-y)<margin)&&(fabs(third_point.x-x)<margin)){
 			prestatus = status;
 			status = -1;
+			comand.linear.z = 1;
+			comand_pub.publish(comand);
+
+			ros::Time start = ros::Time::now();
+			ros::Time now = ros::Time::now();
+			while(!((now - start) > ros::Duration(3.0))){
+			now = ros::Time::now();
+		}
 		}
 	}
 
@@ -181,18 +218,34 @@ ROS_ERROR("log:%f", fabs(first_point.y-y));
 		 ROS_ERROR("log:%f", status);
 		comand.linear.x = cos(b-theta);
 		comand.linear.y = sin(b-theta);
-		comand.angular.y = 0.01*(-270-theta*180/M_PI);
+		comand.angular.y = k*(-270-theta*180/M_PI);
 		comand_pub.publish(comand);
 		
 		if((fabs(forth_point.y-y)<margin)&&(fabs(forth_point.x-x)<margin)){
 			prestatus = status;
 			status = -1;
+			comand.linear.z = 1;
+			comand_pub.publish(comand);
+
+			ros::Time start = ros::Time::now();
+			ros::Time now = ros::Time::now();
+			while(!((now - start) > ros::Duration(3.0))){
+			now = ros::Time::now();
+		}
+
 		}
 		
 	}
 	
 	if(status == 4.5){
-		status =0;
+
+		count++;
+		status = 1;
+		theta = theta +2*M_PI;
+		pretheta = 0;
+		if(count ==3){
+			status =0;
+		}
 		b = atan2((first_point.y-y),(first_point.x-x));
 		 ROS_ERROR("log:%f", status);
 		comand.linear.x = cos(b-theta)/100;
@@ -211,17 +264,22 @@ ROS_ERROR("log:%f", fabs(first_point.y-y));
 	}	
 	
 
+
 	if(status==-1){
-		comand.linear.x = 1;
+
+		comand.linear.x = 0.2;
 		comand.linear.z = 1;
 		comand_pub.publish(comand);
  ROS_ERROR("log:%f", status);
-		if(theta<-double(prestatus)*M_PI/2){
+		if(theta<-double(prestatus)*M_PI/8*3){
 
 			status = prestatus+0.5;
 			comand.linear.x = 0;
 			comand.linear.z = 0;
 			comand_pub.publish(comand);
+
+
+
 
 		}
 

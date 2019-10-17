@@ -76,6 +76,16 @@ void enc_Callback(const std_msgs::Int64::ConstPtr& enc)
 
 	double left_rear_enc = enc->data; // 右車軸の位置[rad]
 	double distance = left_rear_enc/3700;//1084*M_PI*0.064;//３７００：１ｍあたりのエンコーダ増加量
+
+	if(fabs(enc->data-preenc)>30000){
+		preenc = enc->data;
+		 ROS_ERROR("erorrrrrrrrrrrr:" );
+		predistance = distance;
+		
+
+
+	}
+
 	a = atan2(y,x);		
 
 	if(z != 0){//旋回の時
