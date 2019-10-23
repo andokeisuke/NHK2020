@@ -267,11 +267,12 @@ ROS_ERROR("log:%f", fabs(first_point.y-y));
 
 	if(status==-1){
 
-		comand.linear.x = 0.2;
+		comand.linear.x = 1;
+		comand.linear.y = 0;
 		comand.linear.z = 1;
 		comand_pub.publish(comand);
  ROS_ERROR("log:%f", status);
-		if(theta<-double(prestatus)*M_PI/8*3){
+		if(theta<-double(prestatus)*M_PI/16*7){
 
 			status = prestatus+0.5;
 			comand.linear.x = 0;

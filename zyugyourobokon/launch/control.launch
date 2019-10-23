@@ -16,7 +16,7 @@
 
 <!--twist_arduino-->
  <node name="tf_twist" type="tf_twist3" pkg="tf_twist" >
- <param name="speed" value="40" />
+ <param name="speed" value="65" />
  </node>
 <node
  pkg="rosserial_python"
@@ -32,7 +32,7 @@
  type="serial_node.py"
  name="serial_node2">
 
-<param name="port" value="/dev/ttyACM1"/>
+<param name="port" value="/dev/ttyACM4"/>
 <param name="baud" value="57600"/>
 </node>
 

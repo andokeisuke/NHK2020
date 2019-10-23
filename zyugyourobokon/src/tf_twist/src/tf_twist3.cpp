@@ -107,7 +107,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 	{
 
 
-		temp_v = v*linear_vel;//angular_vel / WHEEL_RADIUS;
+		temp_v = 40;//angular_vel / WHEEL_RADIUS;
 		temp_theta = 0;
 
 		if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)<=M_PI)temp_theta=(int(now_theta/(2*M_PI)))*2*M_PI;

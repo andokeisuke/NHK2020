@@ -3,7 +3,7 @@
 
  <param name="first_point_x" value="0." />
  <param name="first_point_y" value="4.0" />
-
+		
  <param name="second_point_x" value="1.5" />
  <param name="second_point_y" value="4.0" />
 
@@ -13,7 +13,7 @@
  <param name="forth_point_x" value="0.0" />
  <param name="forth_point_y" value="0.6" />
 
- <param name="k" value="0.01" />
+ <param name="k" value="0.015" />
  <param name="margin" value="0.01" />
  </node>
 
