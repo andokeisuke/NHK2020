@@ -9,7 +9,7 @@ project(my_robo_2dav)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   move_base
-  my_robo_description
+
 )
 
 ## System dependencies are found with CMake's conventions
