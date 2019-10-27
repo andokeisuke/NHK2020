@@ -10,7 +10,7 @@
 #define SR 4
 
 volatile long int temp, counter = 0;
-const float Kp=3.05516;//2.0455;//0.63919;
+const float Kp=4.55516;//2.0455;//0.63919;
 const float Ki=0.21958;//0.87196;//0;
 const float Kd=0.00059;//0.0047161;//0.25552;
 float targetenc=0;
@@ -27,7 +27,7 @@ float preenc;
 
 int state = false;
 
-int I2C_address = 0x11;
+int I2C_address = 0x13;
 Ti2c receiver(I2C_address);
 
 ISR(PCINT1_vect,ISR_NOBLOCK){

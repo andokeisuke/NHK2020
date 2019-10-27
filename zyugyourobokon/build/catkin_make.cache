@@ -1,2 +1,2 @@
-control:custom_msg:fourws:imu_tools/imu_complementary_filter:imu_tools/imu_filter_madgwick:imu_tools/imu_tools:imu_tools/rviz_imu_plugin:my_robo_2dav:navigation:odometry:tf_listener:tf_twist
--DCATKIN_DEVEL_PREFIX=/home/ando/zyugyourobokon/devel -DCMAKE_INSTALL_PREFIX=/home/ando/zyugyourobokon/install -G Unix Makefiles
+control:custom_msg:fourws:my_robo_2dav:navigation:odometry:tf_listener:tf_twist
+-DCATKIN_DEVEL_PREFIX=/home/akei/JR2019/10_26/NHK2020/zyugyourobokon/devel -DCMAKE_INSTALL_PREFIX=/home/akei/JR2019/10_26/NHK2020/zyugyourobokon/install -G Unix Makefiles
