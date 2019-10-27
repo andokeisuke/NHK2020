@@ -1,9 +1,6 @@
 #include <ros/ros.h>  // rosで必要はヘッダーファイル
 #include <geometry_msgs/Twist.h> // ロボットを動かすために必要
 
-
-
-
 double x = 0;
 double y  = 0;
 double theta = 0;
@@ -92,8 +89,8 @@ int main(int argc, char **argv){
 					base = ros::Time::now();
 				}
 				prezent = ros::Time::now();
-				comand.linear.x /= std::pow(prezent-base, 2)*alpha;
-				comand.linear.y /= std::pow(prezent-base, 2)*alpha;
+				comand.linear.x /= std::pow(prezent.sec-base.sec, 2)*alpha;
+				comand.linear.y /= std::pow(prezent.sec-base.sec, 2)*alpha;
 			}
 
 			comand_pub.publish(comand);
@@ -144,8 +141,8 @@ int main(int argc, char **argv){
 					base = ros::Time::now();
 				}
 				prezent = ros::Time::now();
-				comand.linear.x /= std::pow(prezent-base, 2)*alpha;
-				comand.linear.y /= std::pow(prezent-base, 2)*alpha;
+				comand.linear.x /= std::pow(prezent.sec-base.sec, 2)*alpha;
+				comand.linear.y /= std::pow(prezent.sec-base.sec, 2)*alpha;
 			}
 
 			comand_pub.publish(comand);
@@ -195,8 +192,8 @@ int main(int argc, char **argv){
 					base = ros::Time::now();
 				}
 				prezent = ros::Time::now();
-				comand.linear.x /= std::pow(prezent-base, 2)*alpha;
-				comand.linear.y /= std::pow(prezent-base, 2)*alpha;
+				comand.linear.x /= std::pow(prezent.sec-base.sec, 2)*alpha;
+				comand.linear.y /= std::pow(prezent.sec-base.sec, 2)*alpha;
 			}
 
 			comand_pub.publish(comand);
