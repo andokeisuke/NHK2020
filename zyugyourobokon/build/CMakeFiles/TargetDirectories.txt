@@ -99,10 +99,11 @@
 /home/ando/zyugyourobokon/build/navigation/CMakeFiles/install.dir
 /home/ando/zyugyourobokon/build/navigation/CMakeFiles/rebuild_cache.dir
 /home/ando/zyugyourobokon/build/navigation/CMakeFiles/edit_cache.dir
+/home/ando/zyugyourobokon/build/navigation/CMakeFiles/test.dir
 /home/ando/zyugyourobokon/build/navigation/CMakeFiles/navigation_node.dir
+/home/ando/zyugyourobokon/build/navigation/CMakeFiles/navigation_node2.dir
 /home/ando/zyugyourobokon/build/navigation/CMakeFiles/install/strip.dir
 /home/ando/zyugyourobokon/build/navigation/CMakeFiles/install/local.dir
-/home/ando/zyugyourobokon/build/navigation/CMakeFiles/test.dir
 /home/ando/zyugyourobokon/build/tf_twist/CMakeFiles/list_install_components.dir
 /home/ando/zyugyourobokon/build/tf_twist/CMakeFiles/install.dir
 /home/ando/zyugyourobokon/build/tf_twist/CMakeFiles/rebuild_cache.dir

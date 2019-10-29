@@ -13,7 +13,7 @@
     <param name="odom_model_type" value="omni-corrected"/>
     <param name="odom_alpha1" value="0.1"/><!--オドメトリの直進成分がオドメトリの直進成分に与える誤差-->
     <param name="odom_alpha2" value="0.7"/><!--オドメトリの直進成分がオドメトリの回転成分に与える誤差-->
-    <param name="odom_alpha3" value="0.1"/><!--オドメトリの回転成分がオドメトリの直進成分に与える誤差-->
+    <param name="odom_alpha3" value="0.7"/><!--オドメトリの回転成分がオドメトリの直進成分に与える誤差-->
     <param name="odom_alpha4" value="0.7"/><!--オドメトリの回転成分がオドメトリの回転成分に与える誤差-->
     <param name="odom_alpha5" value="0.1"/>
 
@@ -45,7 +45,7 @@
 
 
     <param name="update_min_d" value="0.005"/><!--フィルタのアップデートを実行する前に必要とされる並進運動。--> 
-    <param name="update_min_a" value="0.02"/><!--フィルタのアップデートを実行する前に必要とされる回転運動。-->
+    <param name="update_min_a" value="0.001"/><!--フィルタのアップデートを実行する前に必要とされる回転運動。-->
 
     <param name="resample_interval" value="10"/><!--リサンプリング前に必要なフィルタ更新の数-->
    

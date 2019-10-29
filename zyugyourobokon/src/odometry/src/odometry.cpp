@@ -22,6 +22,8 @@ double z = 0;
 double w = 0;
 double r = 0;
 double th = 0;
+double theta = 0;
+double theta_enc = 0;
 double th_pre = 0;
 double th_init = 0;
 double a = 0;
@@ -54,19 +56,28 @@ void twist_Callback(const geometry_msgs::Twist::ConstPtr& twist)
 void imu_Callback(const std_msgs::Int16::ConstPtr& imu)
    {
 
-	double theta = double(imu->data)/180*M_PI-th_pre; 
 
-	if(fabs(theta)>=M_PI){
-		if(theta > 0) theta = theta + 2 * M_PI;
-		else theta = theta - 2*M_PI;
+	 
+	//if(z == 0){
+		theta = (double(imu->data)/180*M_PI-th_pre);
+		if(fabs(theta)>=M_PI){
+			if(theta > 0) theta = theta + 2 * M_PI;
+			else theta = theta - 2*M_PI;
 
 
-	}
-	th = th +(double(imu->data)/180*M_PI-th_pre);
-	 //ROS_ERROR("log:%f", th_init);
-        odom_quat = tf::createQuaternionMsgFromYaw(th-th_init);
+		}
 
-	th_pre = th;
+		//th = th +theta;
+		 //ROS_ERROR("log:%f", th_init);
+		//odom_quat = tf::createQuaternionMsgFromYaw(th-th_init);
+
+		//th_pre = th;
+
+	//}else{
+
+		th_pre = double(imu->data)/180*M_PI;
+
+	//}
 		
 
    }
@@ -89,11 +100,13 @@ void enc_Callback(const std_msgs::Int64::ConstPtr& enc)
 	a = atan2(y,x);		
 
 	if(z != 0){//旋回の時
-		b = -(enc->data-preenc)/2600*(M_PI/2*0.35)/0.35;
-
 		
-		state_odom_x=state_odom_x+0.7*sin(b/2)*cos(b/2+th-th_init);
+		b = (enc->data-preenc)/2600*M_PI/2;
+		theta_enc = b;
+		
+		state_odom_x=state_odom_x+ 0.7*sin(b/2)*cos(b/2+th-th_init);
      		state_odom_y=state_odom_y+ 0.7*sin(b/2)*sin(b/2+th-th_init);
+		//odom_quat = tf::createQuaternionMsgFromYaw(th-th_init);
 		//th =th+b;
 
 
@@ -131,7 +144,7 @@ int main(int argc, char **argv){
     ros::Subscriber twist_sub = n.subscribe<geometry_msgs::Twist>("/sub", 1, twist_Callback);
     ros::Publisher odm_pub = n.advertise<geometry_msgs::TransformStamped>("/odometry",1000);
     ros::Publisher pose_pub = n.advertise<geometry_msgs::Twist>("/pose",1000);
-    ros::Rate r(30.0);
+    ros::Rate r(40.0);
     geometry_msgs::TransformStamped odom_trans;
     geometry_msgs::Twist pose_trans;
     odom_trans.header.frame_id = "odom";
@@ -139,44 +152,55 @@ int main(int argc, char **argv){
 
     while(n.ok()){
 
-    current_time = ros::Time::now();
+    	current_time = ros::Time::now();
     
-    odom_trans.header.stamp = current_time;
+    	odom_trans.header.stamp = current_time;
 
-    ros::spinOnce();
-    if(init == 1){
-	state_odom_x = 0;
-	state_odom_y = 0;
-	//odom_quat = tf::createQuaternionMsgFromYaw(0);
-	th_init = th;
-	th_pre =th;
-
-
-    }
+    	ros::spinOnce();
 
 
 
-    odom_trans.transform.translation.x = state_odom_x;
-    odom_trans.transform.translation.y = state_odom_y;
-    odom_trans.transform.translation.z = 0.0;
-
-    pose_trans.linear.x = state_odom_x;
-    pose_trans.linear.y = state_odom_y;
-    pose_trans.linear.z = 0;
-    
-
-    odom_trans.transform.rotation = odom_quat;
 
 
+    	odom_trans.transform.translation.x = state_odom_x;
+    	odom_trans.transform.translation.y = state_odom_y;
+    	odom_trans.transform.translation.z = 0.0;
 
-    pose_trans.angular.x = a;
-    pose_trans.angular.z = (th-th_init)/M_PI*180;
+    	pose_trans.linear.x = state_odom_x;
+    	pose_trans.linear.y = state_odom_y;
+    	pose_trans.linear.z = 0;
+        
+	if(z == 0){
+		th = th + theta;
+ROS_ERROR("z=0");
+	}else{
+		th = th + theta_enc;
+	}
+	theta = 0;
+	theta_enc = 0;
 
-    odom_broadcaster.sendTransform(odom_trans);
-    odm_pub.publish(odom_trans);
-    pose_pub.publish(pose_trans);
+    	if(init == 1){
+		state_odom_x = 0;
+		state_odom_y = 0;
+		//odom_quat = tf::createQuaternionMsgFromYaw(0);
+		th_init = th;
+		th_pre =th;
 
-    ros::spinOnce();
-    r.sleep();
-    }
+
+    	}
+
+	odom_quat = tf::createQuaternionMsgFromYaw(th-th_init);
+    	odom_trans.transform.rotation = odom_quat;
+
+
+
+    	pose_trans.angular.x = a;
+    	pose_trans.angular.z = (th-th_init)/M_PI*180;
+    	odom_broadcaster.sendTransform(odom_trans);
+    	odm_pub.publish(odom_trans);
+    	pose_pub.publish(pose_trans);
+
+    	ros::spinOnce();
+    	r.sleep();
+   }
 }

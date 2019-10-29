@@ -16,6 +16,7 @@
 float temp_theta = 0;
 double now_theta = 0;
 float v ,w,X,Y,init_pose;
+double v_turn;
 
 int now_pose,const_pose;
 
@@ -50,16 +51,16 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 	float linear_vel , angular_vel;
 
 	linear_vel  = sqrt((msg->linear.x)*(msg->linear.x)+(msg->linear.y)*(msg->linear.y));
-	if(linear_vel>1){
+//	if(linear_vel>1){
 
-		linear_vel=1;
+//		linear_vel=1;
 
 
-	}
-	if(linear_vel<-1){
-		linear_vel=-1;
+//	}
+//	if(linear_vel<-1){
+//		linear_vel=-1;
 
-	}
+	//}
 	angular_vel = msg->angular.z;
 
 	w = -msg->angular.y;
@@ -107,7 +108,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 	{
 
 
-		temp_v = 40;//angular_vel / WHEEL_RADIUS;
+		temp_v = v_turn;//angular_vel / WHEEL_RADIUS;
 		temp_theta = 0;
 
 		if(abs((int(now_theta/(2*M_PI)))*2*M_PI-now_theta)<=M_PI)temp_theta=(int(now_theta/(2*M_PI)))*2*M_PI;
@@ -115,14 +116,14 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 
 			
 		left_front.st_target_deg = temp_theta/M_PI*180+(atan(455/75)-M_PI/4)/M_PI*180;
-		left_rear.st_target_deg = temp_theta/M_PI*180-(atan(455/75)-M_PI/4)/M_PI*180;
+		left_rear.st_target_deg = temp_theta/M_PI*180-(atan(455/75)-M_PI/4)/M_PI*180+180;
 		right_rear.st_target_deg = temp_theta/M_PI*180-(atan(275/75)-M_PI*3/4)/M_PI*180;
 		right_front.st_target_deg =temp_theta/M_PI*180+(atan(275/75)-M_PI*3/4)/M_PI*180;		
 
                 if(msg->linear.z>0){
 
 			left_front.wh_target_vel = -temp_v*91/55;
-			left_rear.wh_target_vel = -temp_v*91/55;
+			left_rear.wh_target_vel = temp_v*91/55;
 			right_rear.wh_target_vel = +temp_v;
 			right_front.wh_target_vel = temp_v;
 
@@ -131,7 +132,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 		else{
 
 			left_front.wh_target_vel = temp_v*91/55;
-			left_rear.wh_target_vel = temp_v*91/55;
+			left_rear.wh_target_vel = -temp_v*91/55;
 			right_rear.wh_target_vel = -temp_v;
 			right_front.wh_target_vel = -temp_v;
 
@@ -175,18 +176,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 			ROS_ERROR("log:%f", now_pose-init_pose);
 		
 
-			//double error = -(now_pose-init_pose);
-			//if(error<0)w = -0.001;
-			//if(error>0)w = 0.001;
-			//w = K*(0 - error);
 
-			//if((now_pose-init_pose)>M_PI)w = K*(static_pose - ((now_pose-init_pose)-2*M_PI));
-			//if((now_pose-init_pose)<-M_PI)w = K*(static_pose - ((now_pose-init_pose)+2*M_PI));
-
-			//if(now_pose<-10)w = 0.01;
-			//if(now_pose>10)w = -0.01;
-
-		        //w = 0.01*now_pose;
 		
 			temp_v = v*linear_vel;
 			left_front.st_target_deg = (atan2(Y + w/sqrt(2),X - w/sqrt(2)) - M_PI*3/4)/M_PI*180;//(temp_theta - M_PI*3/4)/M_PI*180;
@@ -217,10 +207,10 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 
 	if(msg->angular.x){
 
-		left_front.st_target_deg = 0;
-		left_rear.st_target_deg = 0;
-		right_rear.st_target_deg = 0;
-		right_front.st_target_deg = 0;
+		//left_front.st_target_deg = 0;
+		//left_rear.st_target_deg = 0;
+		//right_rear.st_target_deg = 0;
+		//right_front.st_target_deg = 0;
 		left_front.wh_target_vel = 0;
 		left_rear.wh_target_vel = 0;
 		right_rear.wh_target_vel = 0;
@@ -229,6 +219,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg){
 
 
 	}
+
 	
 
 
@@ -246,7 +237,7 @@ int main(int argc,char **argv){
 	ros::init(argc,argv,"sub_pub");
 	ros::NodeHandle nh;
 	nh.getParam("tf_twist/speed", v);
-
+	nh.getParam("tf_twist/turn_speed", v_turn);
 	sub = nh.subscribe("sub",10,messageCallback);
 	imu_sub = nh.subscribe("imu",10,imu_messageCallback);
 	spe_sub = nh.subscribe("spe",10,spe_messageCallback);

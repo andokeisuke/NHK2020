@@ -803,6 +803,19 @@ navigation_node/fast:
 .PHONY : navigation_node/fast
 
 #=============================================================================
+# Target rules for targets named navigation_node2
+
+# Build rule for target.
+navigation_node2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 navigation_node2
+.PHONY : navigation_node2
+
+# fast build rule for target.
+navigation_node2/fast:
+	$(MAKE) -f navigation/CMakeFiles/navigation_node2.dir/build.make navigation/CMakeFiles/navigation_node2.dir/build
+.PHONY : navigation_node2/fast
+
+#=============================================================================
 # Target rules for targets named tf_twist
 
 # Build rule for target.
@@ -1943,6 +1956,7 @@ help:
 	@echo "... custom_msg_genpy"
 	@echo "... fourws_node"
 	@echo "... navigation_node"
+	@echo "... navigation_node2"
 	@echo "... tf_twist"
 	@echo "... tf_twist2"
 	@echo "... tf_twist3"

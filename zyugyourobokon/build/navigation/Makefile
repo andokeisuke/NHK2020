@@ -100,6 +100,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -121,17 +132,6 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -180,6 +180,21 @@ navigation_node/fast:
 	cd /home/ando/zyugyourobokon/build && $(MAKE) -f navigation/CMakeFiles/navigation_node.dir/build.make navigation/CMakeFiles/navigation_node.dir/build
 .PHONY : navigation_node/fast
 
+# Convenience name for target.
+navigation/CMakeFiles/navigation_node2.dir/rule:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f CMakeFiles/Makefile2 navigation/CMakeFiles/navigation_node2.dir/rule
+.PHONY : navigation/CMakeFiles/navigation_node2.dir/rule
+
+# Convenience name for target.
+navigation_node2: navigation/CMakeFiles/navigation_node2.dir/rule
+
+.PHONY : navigation_node2
+
+# fast build rule for target.
+navigation_node2/fast:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f navigation/CMakeFiles/navigation_node2.dir/build.make navigation/CMakeFiles/navigation_node2.dir/build
+.PHONY : navigation_node2/fast
+
 src/navigation.o: src/navigation.cpp.o
 
 .PHONY : src/navigation.o
@@ -207,6 +222,33 @@ src/navigation.cpp.s:
 	cd /home/ando/zyugyourobokon/build && $(MAKE) -f navigation/CMakeFiles/navigation_node.dir/build.make navigation/CMakeFiles/navigation_node.dir/src/navigation.cpp.s
 .PHONY : src/navigation.cpp.s
 
+src/navigation2.o: src/navigation2.cpp.o
+
+.PHONY : src/navigation2.o
+
+# target to build an object file
+src/navigation2.cpp.o:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f navigation/CMakeFiles/navigation_node2.dir/build.make navigation/CMakeFiles/navigation_node2.dir/src/navigation2.cpp.o
+.PHONY : src/navigation2.cpp.o
+
+src/navigation2.i: src/navigation2.cpp.i
+
+.PHONY : src/navigation2.i
+
+# target to preprocess a source file
+src/navigation2.cpp.i:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f navigation/CMakeFiles/navigation_node2.dir/build.make navigation/CMakeFiles/navigation_node2.dir/src/navigation2.cpp.i
+.PHONY : src/navigation2.cpp.i
+
+src/navigation2.s: src/navigation2.cpp.s
+
+.PHONY : src/navigation2.s
+
+# target to generate assembly for a file
+src/navigation2.cpp.s:
+	cd /home/ando/zyugyourobokon/build && $(MAKE) -f navigation/CMakeFiles/navigation_node2.dir/build.make navigation/CMakeFiles/navigation_node2.dir/src/navigation2.cpp.s
+.PHONY : src/navigation2.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -217,13 +259,17 @@ help:
 	@echo "... install"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... navigation_node"
+	@echo "... navigation_node2"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... test"
 	@echo "... src/navigation.o"
 	@echo "... src/navigation.i"
 	@echo "... src/navigation.s"
+	@echo "... src/navigation2.o"
+	@echo "... src/navigation2.i"
+	@echo "... src/navigation2.s"
 .PHONY : help
 
 

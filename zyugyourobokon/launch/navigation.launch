@@ -1,11 +1,17 @@
 <launch>
- <node name="navigation" type="navigation_node" pkg="navigation" >
+ <node name="navigation" type="navigation_node2" pkg="navigation" >
 
- <param name="first_point_x" value="0." />
- <param name="first_point_y" value="4.0" />
+ <param name="first_point_x" value="0.0" />
+ <param name="first_point_y" value="3.7" />
+ <param name="first_point_theta" value="0" />
 		
- <param name="second_point_x" value="1.5" />
- <param name="second_point_y" value="4.0" />
+ <param name="second_point_x" value="1.2" />
+ <param name="second_point_y" value="3.7" />
+ <param name="second_point_theta" value="-90" />
+
+ <param name="top_point_x" value="0.6" />
+ <param name="top_point_y" value="1.5" />
+ <param name="top_point_theta" value="-180" />
 
  <param name="third_point_x" value="1.5" />
  <param name="third_point_y" value="0.6" />
@@ -13,8 +19,11 @@
  <param name="forth_point_x" value="0.0" />
  <param name="forth_point_y" value="0.6" />
 
- <param name="k" value="0.015" />
+ <param name="k" value="0.01" />
  <param name="margin" value="0.01" />
+
+ <param name="alpha" value="4.0" />
+ <param name="trapez_margin" value="0.3" />
  </node>
 
 </launch>
